@@ -15,12 +15,14 @@ add_executable(main ${SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/includes)
 
 # We need a1.h a2.h b1.h b2.h and the lib_a and lib_b library
-target_link_libraries(main PRIVATE module_a -static-libgcc -static-libstdc++)
-target_link_libraries(main PRIVATE module_b -static-libgcc -static-libstdc++)
+target_link_libraries(main PRIVATE module_a)
+target_link_libraries(main PRIVATE module_b)
 
 # We need a1.h a2.h b1.h b2.h and the lib_a and lib_b library
-target_link_libraries(main PRIVATE lib_a -static-libgcc -static-libstdc++)
-target_link_libraries(main PRIVATE lib_b -static-libgcc -static-libstdc++)
+target_link_libraries(main PRIVATE lib_a)
+target_link_libraries(main PRIVATE lib_b)
+
+# -static-libgcc -static-libstdc++
 
 # Tell C++ compiler to use C++20 features. We don't actually use any of them.
 target_compile_features(main PUBLIC cxx_std_20)
